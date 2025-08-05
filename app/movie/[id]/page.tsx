@@ -10,8 +10,8 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 
-const IDPage = async ({ params }: { params: { id: string } }) => {
-  const { id } = params;
+const IDPage = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = await params;
 
   const movie = await prisma.movie.findUnique({
     where: { id },
